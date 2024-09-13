@@ -15,7 +15,8 @@
 //#define defines symbols to mean whatever we type at the right (symbols are called macros), finds and replaces
 // Use all caps for defined constants
 // Every time the preprocessor finds CAPACITY will replace with 5000
-// Do not end with a ;
+// Do not end with a ; since it is a preprocessor directive
+// Use of constants instead of macros is better for C++
 #define CAPACITY 5000
 
 // Need for #ifdef DEBUG to work
