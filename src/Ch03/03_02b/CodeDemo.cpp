@@ -7,12 +7,30 @@
 
 enum class cow_purpose {dairy, meat, hide, pet};
 
-struct cow{
+class cow{
+public: // return type, name of func, list of params
+    cow(std::string name_i, int age_i, cow_purpose purpose_i){
+        name = name_i;
+        age = age_i;
+        purpose = purpose_i;
+    }
+    std::string get_name() const{ //const to not modify as a getter function, const correctness
+        return name;
+    }
+    int get_age() const{
+        return age;
+    }
+    cow_purpose get_purpose() const{
+        return purpose;
+    }
+// public: //used to expose the vars below publicly without member functions, not good in practice
+private:
     std::string name;
     int age;
     cow_purpose purpose;
 };
 
+// Leaves below with errors because we haven't created a cow instance yet.
 int main(){
     cow my_cow;
     my_cow.age = 5;
