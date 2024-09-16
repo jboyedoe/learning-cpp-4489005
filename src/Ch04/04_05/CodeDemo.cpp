@@ -26,9 +26,58 @@ int main(){
 
     // Calculate the GPA for the selected student.
     // Write your code here
+    float average1 = 0.0f;
+    int credits1 = 0;
+    float average2 = 0.0f;
+    int credits2 = 0;
+
+    for (int i = 0; i < grades.size(); i++){
+        Grade current_grade = grades[i]; // used a reference to not store this
+        int course_taken = current_grade.get_course_id();
+        int course_credits = courses[course_taken].get_credits();
+        char grade_got = current_grade.get_grade();
+        float grade_val;
+        switch(grade_got){
+            case 'A':
+                grade_val = 4.0f;
+                break;
+            case 'B':
+                grade_val = 3.0f;
+                break;
+            case 'C': 
+                grade_val = 2.0f;
+                break;
+            case 'D':
+                grade_val = 1.0f;
+                break;
+            default:  
+                grade_val = 0.0f;
+                break;
+        }
+        float to_add = grade_val*course_credits;
+
+        if (current_grade.get_student_id() == 1){
+            average1 += to_add;
+            credits1 += course_credits;
+        }
+        else{
+            average2 += to_add;
+            credits2 += course_credits;
+        }
+    }
+    average1 /= credits1;
+    average2 /= credits2;
+
 
     std::string student_str;
-    student_str = students[0].get_name(); // Change this to the selected student's name
+    if (id == 1){
+        student_str = students[0].get_name(); // Change this to the selected student's name
+        GPA = average1;
+    }
+    else{
+        student_str = students[1].get_name(); // Change this to the selected student's name
+        GPA = average2;
+    }
 
     std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
     
