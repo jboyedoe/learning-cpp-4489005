@@ -16,11 +16,17 @@ int main(){
     if (inFile.fail())
         std::cout << std::endl << "File not found!" << std::endl;
     else{
-        while (!inFile.eof()){
+        while (!inFile.eof()){ //eof returns end of file
+            getline(inFile, str); //inFile can be used with cin for complete lines of text
+            std::cout << str << ", ";
             getline(inFile, str);
-            std::cout << str << std::endl;
+            number = stoi(str);
+            std::cout << number << ", ";
+            getline(inFile, str);
+            letter = str[0]; 
+            std::cout << letter << std::endl;
         }
-        inFile.close();
+        inFile.close();// close files you no longer need
     }
     
     std::cout << std::endl << std::endl;
